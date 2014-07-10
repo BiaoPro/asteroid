@@ -1,0 +1,14 @@
+com.asteroid.action
+com.asteroid.controller
+com.asteroid.controller.attention
+com.asteroid.controller.comment
+com.asteroid.controller.daoVO
+com.asteroid.controller.letter
+com.asteroid.controller.praise
+com.asteroid.controller.release
+com.asteroid.controller.tag
+com.asteroid.controller.tagAdd
+com.asteroid.controller.user
+com.asteroid.model
+com.asteroid.service
+com.asteroid.util

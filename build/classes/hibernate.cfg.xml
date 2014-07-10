@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+    <session-factory>
+        <!-- 其他配置 -->
+		<property name="hibernate.show_sql">true</property>
+		<property name="hbm2ddl.auto">update</property>
+	    <!-- 
+			create：先删除，再创建
+			update：如果表不存在就创建，不一样就更新，一样就什么都不做。
+			create-drop：初始化时创建表，SessionFactory执行close()时删除表。
+			validate：验证表结构是否一致，如果不一致，就抛异常。
+		 -->
+        <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://127.0.0.1/db_asteroid</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">admin</property>
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+       
+        <!-- 导入映射文件 -->
+		<mapping resource="com/asteroid/model/User.hbm.xml"/>
+		<mapping resource="com/asteroid/model/Tag.hbm.xml"/>
+		<mapping resource="com/asteroid/model/TagAdd.hbm.xml"/>
+        <mapping resource="com/asteroid/model/Attention.hbm.xml"/>
+         <mapping resource="com/asteroid/model/Comment.hbm.xml"/>
+         <mapping resource="com/asteroid/model/PrivateLetter.hbm.xml"/>
+          <mapping resource="com/asteroid/model/AddPraise.hbm.xml"/>
+          <mapping resource="com/asteroid/model/UserRelease.hbm.xml"/>
+        
+        <!--  -->
+	
+    </session-factory>
+</hibernate-configuration>
+
+
+<!-- 
+
+	在Hibernate中，提供了主键生成策略。下面是比较常用的几种： 
+	1：assigned 
+	表示在新增数据时由应用程序指定主键的值。主要针对主键是采用自然主键的形式。这种方式，适用于主键列不是自动增长列。 
+	其缺点为在执行新增操作时，需查询数据库判断生成的主键是否已经存在。 
+	2：increment 
+	表示新增数据操作时由hibernate自动生成主键值。其生成的值为：先查询该主键列的最大值，然后在最大值的基础上加上1.适用于采用代理主键形式的主键列。同样不能用于主键列是自动增长的表。但是，该主键生成策略也有些缺点。 
+	（1）新增数据前先查询一遍，影响了性能。 
+	（2）主键的类型只能为数值型的int或者long 
+	（3）并发操作时的冲突问题。 
+	3：identity 
+	 不如说是为sqlerver数据库量身定做的。主要适用于sqlserver数据库的自动增长列的表。 
+	4：native 
+	 表示根据不同的数据库采用不同的主键生成策略。比如，当前数据库为sqlserver，则会采用identity，如为oracle，则采用 oracle中的sequence等。区分数据库的不同是以hibernate主配置文件中sessionFactory中配置的数据库方言。 
+	5.uuid
+	* 唯一主键生成办法。从Hibernate中提取出来 
+	优点：避免了生成ID 时，与数据库的再次交道，性能上较高。但对于有的开发人员不太习惯这种id生成方式，UUID生成的32为的字符串，不同于identity 从1开始的整数。 
+
+ -->

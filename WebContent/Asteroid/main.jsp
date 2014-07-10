@@ -1,0 +1,140 @@
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page import="com.asteroid.controller.daoVO.ReleaseVO" %>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>main</title>
+ <link href="bootstrap/css/bootstrap.css" rel="stylesheet" type="text/css">
+ <link href="css/style.css" rel="stylesheet" type="text/css">
+</head>
+<script src="js/jquery.min.js"></script>
+
+
+<style>
+
+body {background-color:#EEE;}
+li {display:inline;list-style-type: none;}
+button {margin-top:-2px;}
+.head {height:110px;width:110px;}
+.head2 {height:70px;width:70px;margin-left:70px;}
+#word {opacity:1;filter:alpha(opacity=100);}
+#word:hover {opacity:0.5;filter:alpha(opacity=50);}
+#photo {opacity:1;filter:alpha(opacity=100);}
+#photo:hover {opacity:0.5;filter:alpha(opacity=50);}
+.div1 {background-color:#FFF;-moz-box-shadow: 1px 5px 5px #888888; /* 老的 Firefox */box-shadow: 1px 5px 5px #888888;}
+#content1 {zoom:1;overflow:hidden;width:500px;}
+.l_img {float:left;height:200px;width:200px;margin-left:20px;clear:both;padding:10px;}
+#icon-tag1 {margin-left:10px;margin-top:2px;}
+#icon-heart {margin-top:2px;}
+
+
+.backToTop {display: none; width: 25px; line-height: 1.2; padding: 5px 0; background-color: #000; color: #fff; font-size: 20px; text-align: center; position: fixed; _position: absolute; right: 10px; bottom: 100px; _bottom: "auto"; cursor: pointer; opacity: .6; filter: Alpha(opacity=60);}
+p {height:80px;}
+
+
+<!-- -----------------------------------------------------------qq表情插件部分---------------------------------------------------------- -->
+
+.comment{width:95%; margin:0px auto; position:relative; background:#fff; padding:20px 10px 10px; border:1px solid #DDD; border-radius:5px;}
+.comment h3{height:28px; line-height:28px}
+.com_form{width:100%; position:relative}
+.input{width:99%; height:60px; border:1px solid #ccc}
+.com_form p{height:28px; line-height:28px; position:relative; margin-top:10px;}
+span.emotion{width:42px; height:20px; background:url(http://www.16code.com/cache/demos/user-say/img/icon.gif) no-repeat 2px 2px; padding-left:20px; cursor:pointer}
+span.emotion:hover{background-position:2px -28px}
+.qqFace{margin-top:4px;background:#fff;padding:2px;border:1px #dfe6f6 solid;}
+.qqFace table td{padding:0px;}
+.qqFace table td img{cursor:pointer;border:1px #fff solid;}
+.qqFace table td img:hover{border:1px #0066cc solid;}
+#show1{width:400px; margin:20px auto; background:#fff; padding:5px; border:1px solid #DDD; vertical-align:top;}
+
+.sub_btn {
+	position:absolute; right:0px; top:0;
+	display: inline-block;
+	zoom: 1; /* zoom and *display = ie7 hack for display:inline-block */
+	*display: inline;
+	vertical-align: baseline;
+	margin: 0 2px;
+	outline: none;
+	cursor: pointer;
+	text-align: center;
+	font: 14px/100% Arial, Helvetica, sans-serif;
+	padding: .5em 2em .55em;
+	text-shadow: 0 1px 1px rgba(0,0,0,.6);
+	-webkit-border-radius: 3px; 
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	box-shadow: 0 1px 2px rgba(0,0,0,.2);
+	color: #e8f0de;
+	border: solid 1px #538312;
+	background: #64991e;
+	background: -webkit-gradient(linear, left top, left bottom, from(#7db72f), to(#4e7d0e));
+	background: -moz-linear-gradient(top,  #7db72f,  #4e7d0e);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#7db72f', endColorstr='#4e7d0e');
+}
+.sub_btn:hover {
+	background: #538018;
+	background: -webkit-gradient(linear, left top, left bottom, from(#6b9d28), to(#436b0c));
+	background: -moz-linear-gradient(top,  #6b9d28,  #436b0c);
+	filter:  progid:DXImageTransform.Microsoft.gradient(startColorstr='#6b9d28', endColorstr='#436b0c');
+}
+<!-- -----------------------------------------------------------qq表情插件部分---------------------------------------------------------- -->
+
+
+</style>
+
+
+<script type="text/javascript">
+
+var msg="${actionErrors[0]}";
+if(msg!=null&&msg!="") {alert(msg);}
+
+</script>
+<script src="js/javascript.js"></script>
+
+<body>
+	<!--------------*******************************************导航条*********************************************--------------------->
+	<%@include file="main/banner.jsp"%>
+	<script>var div = document.getElementById('main').setAttribute("class", "active");</script>
+	<!--------------******************************************* 头像、文字、图片输入*****************************************************---------->
+	<div class="container">
+		<div class="row">
+			
+			<div class="span9" id="divs">
+				<%@include file="main/release.jsp"%>
+				<!--***************************************动态发布内容区***************************************-->
+
+				<%
+				HttpSession s = request.getSession(); 
+				  List<ReleaseVO> list=(List<ReleaseVO>)s.getAttribute("ReleaseList");
+				 if(list!=null)
+				 for (int i=list.size()-1;i>0;i--) {
+				   ReleaseVO release = (ReleaseVO)list.get(i);
+				    s.setAttribute("release", release);
+				%>
+				<jsp:include page="main/content.jsp" flush="true">
+					<jsp:param value="<%=release.getRelease_id()%>" name="id" />
+				</jsp:include>
+				<%
+				  }
+				%>
+				
+			</div>
+			
+			<div class="span3">
+					<%@include file="main/right.jsp"%>
+					<div class="span3"></div>
+			</div>
+		</div>
+	</div>
+	<%@include file="main/footer.jsp"%>
+	<script src="js/bootstrap-modal.js"></script>
+	<script type="text/javascript" src="js/bootstrap-dropdown.js"></script>
+	<script type="text/javascript" src="js/jquery.qqFace.js"></script>
+    <script src="http://www.jq22.com/js/jq.js"></script>
+			
+</body>
+</html>

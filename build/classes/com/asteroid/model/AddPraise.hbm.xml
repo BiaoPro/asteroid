@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.asteroid.model">
+  <class name="AddPraise" table="add_praise">
+		<id name="praise_id">
+			<generator class="native" />
+		</id>
+		<property name="user_id" />
+		<property name="release_id" />
+		<property name="p_date" generated="never" not-null="true">
+			<column name="p_date" sql-type="timestamp" default="CURRENT_TIMESTAMP" />
+		</property>
+	</class>
+</hibernate-mapping>

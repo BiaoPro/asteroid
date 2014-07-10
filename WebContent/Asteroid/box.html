@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>bootstrap图片轮播</title>
+<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+<style>
+body {
+	background-color:#EEE;
+}
+li {
+	display:inline;
+	list-style-type: none;
+}
+.div1 {
+	background-color:#FFF;
+	-moz-box-shadow: 1px 5px 5px #888888; /* 老的 Firefox */
+	box-shadow: 1px 5px 5px #888888;
+}
+</style>
+<link href="../twitter-bootstrap/twitter-bootstrap/bootstrap/twitter-bootstrap-v2/docs/assets/css/bootstrap.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<a href="#cancel" data-toggle="modal">
+<button>cancel</button>
+</a>
+<div class="container">
+  <div id="cancel" class="modal hide fade in" style="display:none;">
+    <div class="modal-header"> <a class="close" data-dismiss="modal">×</a>
+      <h3>账号注销</h3>
+    </div>
+    <div class="modal-body">
+      <form class="form-horizontal">
+        <fieldset>
+          <div class="control-group">
+            <label class="control-label" for="titile">你当前的账号：</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="title" value="990045099@qq.com">
+            </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="text"><i class="icon-edit"></i> 请输入密码：</label>
+            <div class="controls">
+              <input type="text" class="input-xlarge" id="text" >
+            </div>
+          </div>
+        </fieldset>
+      </form>
+    </div>
+    <div class="modal-footer"> <a href="#" class="btn" data-dismiss="modal">取消</a> <a href="#" class="btn btn-primary">注销</a> </div>
+  </div>
+</div>
+<script type="text/javascript" src="../twitter-bootstrap/twitter-bootstrap/bootstrap/twitter-bootstrap-v2/docs/assets/js/jquery.js"></script> 
+<script src="../twitter-bootstrap/twitter-bootstrap/bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-modal.js"></script> 
+<script type="text/javascript" src="../twitter-bootstrap/twitter-bootstrap/bootstrap/twitter-bootstrap-v2/docs/assets/js/bootstrap-dropdown.js">
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js">
+</script> 
+</script> 
+<script type="text/javascript">
+        $(document).ready(function () {
+            $('.dropdown-toggle').dropdown();
+        });
+   </script>
+</html>

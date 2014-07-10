@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.asteroid.model">
+  <class name="UserRelease" table="user_release">
+        <id name="release_id">
+			<generator class="native"/>
+		</id>
+		<property name="user_id"/>
+		<property name="tag_id"/>
+		<property name="title"/>
+		<property name="content"/>
+		<property name="image"/>
+		<property name="music"/>
+		<property name="video"/>
+		<property name="pub_time" generated="never" not-null="true">  
+            <column name="pub_time" sql-type="timestamp" default="CURRENT_TIMESTAMP" />  
+       </property>  
+  </class>
+</hibernate-mapping>

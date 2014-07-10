@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+<!-- 包名自定义可继承， 继承struts-default -->
+<package name="asteroid" extends="struts-default" namespace="/">
+	<!-- action名自定义，class对应的类要加包名 ，这里是action.LoginAction,默认执行LoginAction中的execute方法 -->
+	<action name="LoginAction" class="com.asteroid.action.LoginAction" >
+		<!-- 当方法返回SUCCESS时，跳转到succeess.jsp -->
+		<result name="success">label.jsp</result>
+		<!-- 当方法返回INPUT时，跳转到failure.jsp -->
+		<result name="error">index.jsp</result>
+	</action>
+	<action name="RegisterAction" class="com.asteroid.action.RegisterAction">
+		<result name="success">index.jsp</result>
+		<result name="error">index.jsp</result>
+	</action>
+	
+<!--  *********************************************发布相关Action方法****************************************  -->
+	<action name="ReleaseAction" class="com.asteroid.action.ReleaseAction">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+	<action name="ReleaseActionAdd" class="com.asteroid.action.ReleaseAction" method="addRelease">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+	<action name="ReleaseDel" class="com.asteroid.action.ReleaseAction" method="delRelease">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+	<action name="ReleaseActionAdd2" class="com.asteroid.action.ReleaseAction" method="addRelease2">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+<!--  *********************************************发布相关Action方法****************************************  -->
+
+
+<!--  *********************************************添加删除点赞Action方法****************************************  -->
+	<action name="PraiseAddAction" class="com.asteroid.action.PraiseAction" method="addPraise">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+	<action name="PraiseDelAction" class="com.asteroid.action.PraiseAction" method="delPraise">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+<!--  *********************************************添加删除点赞Action方法****************************************  -->	
+
+
+<!--  *********************************************添加删除关注Action方法****************************************  -->
+	<action name="AttentionAddAction" class="com.asteroid.action.AttentionAction" method="addAttention">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+	<action name="AttentionDelAction" class="com.asteroid.action.AttentionAction" method="delAttention">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+<!--  *********************************************添加删除关注Action方法****************************************  -->	
+
+<!--  *********************************************查找内容Action方法****************************************  -->	
+    <action name="SearchAction" class="com.asteroid.action.SearchAction" method="search">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+	 <action name="SearchAttentionAction" class="com.asteroid.action.SearchAction" method="searchAttention">
+		<result name="success">search.jsp</result>
+		<result name="error">search.jsp</result>
+	</action>
+<!--  *********************************************查找内容Action方法****************************************  -->	
+
+	
+	<action name="CommentAction" class="com.asteroid.action.CommentAction">
+		<result name="success">main.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+	
+<!--  *********************************************用户管理Action方法****************************************  -->		
+	<action name="UserInfoAction" class="com.asteroid.action.UserInfoAction">
+		<result name="success">main.jsp</result>
+		<result name="account">account.jsp</result>
+		<result name="error">main.jsp</result>
+	</action>
+	<action name="UserPassAction" class="com.asteroid.action.UserInfoAction" method="changePassword">
+		<result name="success">account.jsp</result>
+		<result name="error">account.jsp</result>
+	</action>
+	<action name="UserDelAction" class="com.asteroid.action.UserInfoAction" method="delUser">
+		<result name="success">index.jsp</result>
+		<result name="error">account.jsp</result>
+	</action>
+<!--  *********************************************用户管理Action方法****************************************  -->		
+	
+	<action name="LetterAction" class="com.asteroid.action.LetterAction">
+		<result name="success">help.jsp</result>
+	</action>
+	<action name="UploadAction" class="com.asteroid.action.UploadAction">
+		<result name="success">success.jsp</result>
+		<result name="error">failure.jsp</result>
+	</action>
+
+        
+</package>
+</struts>
+
+

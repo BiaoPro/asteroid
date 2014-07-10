@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.asteroid.model">
+
+	<class name="com.asteroid.model.User" table="users">
+		<id name="user_id">
+			<generator class="native"/>
+		</id>
+		<property name="username"/>
+		<property name="password"/>
+		<property name="level"/>
+		
+		<property name="b_date" generated="never" not-null="true">  
+            <column name="b_date" sql-type="timestamp" default="CURRENT_TIMESTAMP" />  
+       </property>  
+		
+		<property name="image"/>
+		<property name="name"/>
+		<property name="sex"/>
+		<property name="email"/>
+		<property name="favourite"/>
+		
+	</class>
+
+</hibernate-mapping>
