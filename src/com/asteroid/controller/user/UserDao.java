@@ -44,7 +44,18 @@ public class  UserDao extends DatabaseDao {
   /**
    * 根据用户id删除用户
    */
-  public  boolean delete(int user_id){return super.delete(CLASS,user_id);}
+  public  boolean delete(int user_id){
+    
+    
+    User vo = this.findById(user_id);
+    
+    vo.setUsername(vo.getUsername()+"已删");
+    
+    return super.update(vo);
+    
+ 
+    //return super.delete(CLASS,user_id);
+    }
   
   /**
    * 修改密码

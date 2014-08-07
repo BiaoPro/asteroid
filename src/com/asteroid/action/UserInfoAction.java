@@ -130,6 +130,7 @@ public class UserInfoAction extends ActionSupport {
          getPassword());
      if(num>0){
      dao.delete(getUser_id());
+     
      addActionError("帐号注销成功,谢谢您的使用~");
      SessionManage.getSession().setAttribute("user", null);
      return SUCCESS;
